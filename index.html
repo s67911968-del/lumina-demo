@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Lumina — Шоурум светотехники в Москве</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: #ffffff;
+            background-color: #ffffff;
             color: #333;
+            line-height: 1.6;
         }
 
+        /* Простой, но стильный фон — работает везде */
         .hero {
             height: 100vh;
             display: flex;
@@ -24,12 +26,11 @@
             justify-content: center;
             text-align: center;
             padding: 0 20px;
-            /* Простой, но стильный фон */
             background:
-                linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px),
-                linear-gradient(145deg, #ffffff 0%, #f9f9f9 100%);
-            background-size: 60px 60px, 60px 60px, 100% 100%;
+                linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px),
+                linear-gradient(140deg, #ffffff 0%, #f8f8f8 100%);
+            background-size: 70px 70px, 70px 70px, 100% 100%;
         }
 
         .hero-content {
@@ -50,16 +51,23 @@
             color: #555;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .btn {
             display: inline-block;
             background: #000;
             color: #fff;
             padding: 15px 30px;
-            border-radius: 0;
             text-decoration: none;
             font-weight: 500;
             font-size: 18px;
-            margin: 5px;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-outline {
@@ -68,7 +76,12 @@
             color: #000;
         }
 
+        .btn:hover {
+            opacity: 0.9;
+        }
+
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 80px auto;
             padding: 0 20px;
@@ -95,6 +108,90 @@
             color: #000;
             text-decoration: underline;
             font-size: 18px;
+            font-weight: 500;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #eee;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+        .product-image {
+            height: 220px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .product-info p {
+            color: #777;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            color: #fff;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
+            .section-title h2 { font-size: 28px; }
         }
     </style>
 </head>
@@ -103,7 +200,7 @@
         <div class="hero-content">
             <h1>LUMINA</h1>
             <p>Шоурум светотехники в центре Москвы</p>
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <div class="hero-buttons">
                 <a href="#catalog" class="btn">Посмотреть товары</a>
                 <a href="catalog.pdf" target="_blank" class="btn btn-outline">📖 Скачать каталог</a>
             </div>
@@ -119,15 +216,50 @@
         <div class="catalog-download">
             <a href="catalog.pdf" target="_blank">📥 Скачать полный каталог (PDF)</a>
         </div>
+
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">Подвесной светильник</div>
+                <div class="product-info">
+                    <h3>Подвесной светильник LUM-2024</h3>
+                    <p>Современный дизайн, регулируемая высота</p>
+                    <button class="product-btn">Забронировать просмотр</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Встраиваемый светильник</div>
+                <div class="product-info">
+                    <h3>Встраиваемый светильник EMB-100</h3>
+                    <p>Компактный, высокая светоотдача</p>
+                    <button class="product-btn">Забронировать просмотр</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Трековая система</div>
+                <div class="product-info">
+                    <h3>Трековая система TRK-500</h3>
+                    <p>Гибкая система с 3 точками</p>
+                    <button class="product-btn">Забронировать просмотр</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">Уличный фонарь</div>
+                <div class="product-info">
+                    <h3>Уличный фонарь STREET-300</h3>
+                    <p>Влагозащищённый, для частных домов</p>
+                    <button class="product-btn">Забронировать просмотр</button>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer style="text-align: center; padding: 20px; background: #000; color: #fff;">
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+    <footer>
+        <div class="footer-links">
             <a href="tel:+74951234567">📞 +7 (495) 123-45-67</a>
             <a href="mailto:info@lumina-moscow.ru">✉️ info@lumina-moscow.ru</a>
             <a href="https://t.me/lumina_moscow">💬 Написать в Telegram</a>
         </div>
-        <p style="margin-top: 10px;">© 2025 Lumina. Все права защищены.</p>
+        <p>© 2025 Lumina. Все права защищены.</p>
     </footer>
 </body>
 </html>
