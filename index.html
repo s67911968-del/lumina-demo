@@ -5,119 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumina — Шоурум светотехники в Москве</title>
     <style>
-        :root {
-            --white: #ffffff;
-            --light-gray: #f9f9f9;
-            --gray: #e0e0e0;
-            --dark-gray: #333333;
-            --black: #000000;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
-            background-color: var(--white);
-            color: var(--dark-gray);
-            line-height: 1.6;
+            background: #ffffff;
+            color: #333;
         }
 
-        /* Генерированный фон — без изображений */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--black);
             padding: 0 20px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(145deg, var(--white) 0%, #fafafa 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                /* Тонкие линии — как треки */
-                linear-gradient(90deg, transparent 99%, rgba(0,0,0,0.03) 100%),
-                linear-gradient(0deg, transparent 99%, rgba(0,0,0,0.02) 100%),
-                /* Мягкие тени — как подсветка */
-                radial-gradient(circle at 15% 20%, rgba(0,0,0,0.02) 0%, transparent 30%),
-                radial-gradient(circle at 85% 75%, rgba(0,0,0,0.02) 0%, transparent 30%);
-            background-size: 80px 80px, 80px 80px, 100% 100%, 100% 100%;
-            pointer-events: none;
-            z-index: 0;
+            /* Простой, но стильный фон */
+            background:
+                linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px),
+                linear-gradient(145deg, #ffffff 0%, #f9f9f9 100%);
+            background-size: 60px 60px, 60px 60px, 100% 100%;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
             max-width: 800px;
         }
 
         .hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
+            color: #000;
             font-weight: 300;
-            letter-spacing: 2px;
-            color: var(--black);
+            letter-spacing: 1px;
         }
 
         .hero p {
             font-size: 20px;
             margin: 0 auto 30px;
-            opacity: 0.8;
-            color: var(--dark-gray);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            color: #555;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--black);
-            color: var(--white);
+            background: #000;
+            color: #fff;
             padding: 15px 30px;
             border-radius: 0;
             text-decoration: none;
             font-weight: 500;
             font-size: 18px;
-            transition: background-color 0.3s;
+            margin: 5px;
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid var(--black);
-            color: var(--black);
-        }
-
-        .btn:hover {
-            background-color: var(--dark-gray);
-        }
-
-        .btn-outline:hover {
-            background: rgba(0,0,0,0.03);
+            border: 1px solid #000;
+            color: #000;
         }
 
         .container {
-            width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
+            margin: 80px auto;
+            padding: 0 20px;
         }
 
         .section-title {
@@ -127,7 +81,7 @@
 
         .section-title h2 {
             font-size: 36px;
-            color: var(--black);
+            color: #000;
             margin-bottom: 15px;
             font-weight: 300;
         }
@@ -138,140 +92,24 @@
         }
 
         .catalog-download a {
-            color: var(--black);
+            color: #000;
             text-decoration: underline;
-            font-weight: 500;
             font-size: 18px;
-        }
-
-        .catalog-download a:hover {
-            opacity: 0.7;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: var(--white);
-            border: 1px solid var(--gray);
-            border-radius: 0;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-        }
-
-        .product-image {
-            height: 250px;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-gray);
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-info h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--black);
-            font-weight: 500;
-        }
-
-        .product-info p {
-            color: var(--gray);
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .product-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--black);
-            color: var(--white);
-            border: none;
-            border-radius: 0;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .product-btn:hover {
-            background-color: var(--dark-gray);
-        }
-
-        footer {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 40px 0 20px;
-            text-align: center;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            .hero p {
-                font-size: 16px;
-            }
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            .section-title h2 {
-                font-size: 28px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section с генерированным фоном -->
     <section class="hero">
         <div class="hero-content">
             <h1>LUMINA</h1>
             <p>Шоурум светотехники в центре Москвы</p>
-            <div class="hero-buttons">
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                 <a href="#catalog" class="btn">Посмотреть товары</a>
                 <a href="catalog.pdf" target="_blank" class="btn btn-outline">📖 Скачать каталог</a>
             </div>
         </div>
     </section>
 
-    <!-- Catalog Section -->
     <section id="catalog" class="container">
         <div class="section-title">
             <h2>Каталог продукции</h2>
@@ -281,51 +119,15 @@
         <div class="catalog-download">
             <a href="catalog.pdf" target="_blank">📥 Скачать полный каталог (PDF)</a>
         </div>
-
-        <div class="products">
-            <div class="product-card">
-                <div class="product-image">Подвесной светильник</div>
-                <div class="product-info">
-                    <h3>Подвесной светильник LUM-2024</h3>
-                    <p>Современный дизайн, регулируемая высота</p>
-                    <button class="product-btn">Забронировать просмотр</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">Встраиваемый светильник</div>
-                <div class="product-info">
-                    <h3>Встраиваемый светильник EMB-100</h3>
-                    <p>Компактный, высокая светоотдача</p>
-                    <button class="product-btn">Забронировать просмотр</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">Трековая система</div>
-                <div class="product-info">
-                    <h3>Трековая система TRK-500</h3>
-                    <p>Гибкая система с 3 точками</p>
-                    <button class="product-btn">Забронировать просмотр</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">Уличный фонарь</div>
-                <div class="product-info">
-                    <h3>Уличный фонарь STREET-300</h3>
-                    <p>Влагозащищённый, для частных домов</p>
-                    <button class="product-btn">Забронировать просмотр</button>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
+    <footer style="text-align: center; padding: 20px; background: #000; color: #fff;">
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
             <a href="tel:+74951234567">📞 +7 (495) 123-45-67</a>
             <a href="mailto:info@lumina-moscow.ru">✉️ info@lumina-moscow.ru</a>
             <a href="https://t.me/lumina_moscow">💬 Написать в Telegram</a>
         </div>
-        <p>© 2025 Lumina. Все права защищены.</p>
+        <p style="margin-top: 10px;">© 2025 Lumina. Все права защищены.</p>
     </footer>
 </body>
 </html>
