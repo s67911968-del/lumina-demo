@@ -7,11 +7,10 @@
     <style>
         :root {
             --white: #ffffff;
-            --light-gray: #f5f5f5;
+            --light-gray: #f9f9f9;
             --gray: #e0e0e0;
             --dark-gray: #333333;
             --black: #000000;
-            --accent: #2c3e50;
         }
 
         * {
@@ -27,16 +26,43 @@
             line-height: 1.6;
         }
 
+        /* Генерированный фон — без изображений */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://via.placeholder.com/1920x1080') no-repeat center center;
-            background-size: cover;
             text-align: center;
-            color: var(--white);
+            color: var(--black);
             padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, var(--white) 0%, #fafafa 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                /* Тонкие линии — как треки */
+                linear-gradient(90deg, transparent 99%, rgba(0,0,0,0.03) 100%),
+                linear-gradient(0deg, transparent 99%, rgba(0,0,0,0.02) 100%),
+                /* Мягкие тени — как подсветка */
+                radial-gradient(circle at 15% 20%, rgba(0,0,0,0.02) 0%, transparent 30%),
+                radial-gradient(circle at 85% 75%, rgba(0,0,0,0.02) 0%, transparent 30%);
+            background-size: 80px 80px, 80px 80px, 100% 100%, 100% 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
         }
 
         .hero h1 {
@@ -44,13 +70,14 @@
             margin-bottom: 20px;
             font-weight: 300;
             letter-spacing: 2px;
+            color: var(--black);
         }
 
         .hero p {
             font-size: 20px;
-            max-width: 600px;
             margin: 0 auto 30px;
-            opacity: 0.9;
+            opacity: 0.8;
+            color: var(--dark-gray);
         }
 
         .hero-buttons {
@@ -74,7 +101,8 @@
 
         .btn-outline {
             background: transparent;
-            border: 1px solid var(--white);
+            border: 1px solid var(--black);
+            color: var(--black);
         }
 
         .btn:hover {
@@ -82,7 +110,7 @@
         }
 
         .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.03);
         }
 
         .container {
@@ -99,7 +127,7 @@
 
         .section-title h2 {
             font-size: 36px;
-            color: var(--dark-gray);
+            color: var(--black);
             margin-bottom: 15px;
             font-weight: 300;
         }
@@ -131,13 +159,13 @@
             border: 1px solid var(--gray);
             border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
             transition: transform 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
         }
 
         .product-image {
@@ -158,7 +186,7 @@
         .product-info h3 {
             font-size: 20px;
             margin-bottom: 10px;
-            color: var(--dark-gray);
+            color: var(--black);
             font-weight: 500;
         }
 
@@ -231,9 +259,9 @@
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
+    <!-- Hero Section с генерированным фоном -->
     <section class="hero">
-        <div>
+        <div class="hero-content">
             <h1>LUMINA</h1>
             <p>Шоурум светотехники в центре Москвы</p>
             <div class="hero-buttons">
@@ -255,7 +283,6 @@
         </div>
 
         <div class="products">
-            <!-- Product 1 -->
             <div class="product-card">
                 <div class="product-image">Подвесной светильник</div>
                 <div class="product-info">
@@ -264,7 +291,6 @@
                     <button class="product-btn">Забронировать просмотр</button>
                 </div>
             </div>
-            <!-- Product 2 -->
             <div class="product-card">
                 <div class="product-image">Встраиваемый светильник</div>
                 <div class="product-info">
@@ -273,7 +299,6 @@
                     <button class="product-btn">Забронировать просмотр</button>
                 </div>
             </div>
-            <!-- Product 3 -->
             <div class="product-card">
                 <div class="product-image">Трековая система</div>
                 <div class="product-info">
@@ -282,7 +307,6 @@
                     <button class="product-btn">Забронировать просмотр</button>
                 </div>
             </div>
-            <!-- Product 4 -->
             <div class="product-card">
                 <div class="product-image">Уличный фонарь</div>
                 <div class="product-info">
